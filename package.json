@@ -1,12 +1,14 @@
 {
   "name": "toyrobot",
   "description": "Control your very own Certsy toy robot!",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Marc Ziani de Ferranti @mezdef",
   "bin": {
-    "toyrobot": "./bin/run"
+    "toyrobot": "bin/run"
   },
-  "bugs": "https://github.com/mezdef/toyrobot/issues",
+  "bugs": {
+    "url": "https://github.com/mezdef/toyrobot/issues"
+  },
   "dependencies": {
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
@@ -53,7 +55,10 @@
       "@oclif/plugin-help"
     ]
   },
-  "repository": "mezdef/toyrobot",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mezdef/toyrobot.git"
+  },
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
@@ -61,5 +66,9 @@
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md"
   },
-  "types": "lib/index.d.ts"
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  }
 }
