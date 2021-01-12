@@ -1,0 +1,1 @@
+PLACE 1,2,EAST MOVE right pLaCE -1,8,down MOVE PLACE 4,4,west LEFT PLACE 5,4,west MOVE REPORT Output: 3,3,NORTH
