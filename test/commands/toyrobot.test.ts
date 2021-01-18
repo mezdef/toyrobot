@@ -12,19 +12,19 @@ describe('Placing', () => {
   .stdout()
   .command(['toyrobot', '-f', './src/test/place-2.txt'])
   .it('does not place off grid x', async function (ctx) {
-    await expect(ctx.stdout).to.contain('\n')
+    await expect(ctx.stdout).to.contain('')
   })
   test
   .stdout()
   .command(['toyrobot', '-f', './src/test/place-3.txt'])
   .it('does not place off grid y', async function (ctx) {
-    await expect(ctx.stdout).to.contain('\n')
+    await expect(ctx.stdout).to.contain('')
   })
   test
   .stdout()
   .command(['toyrobot', '-f', './src/test/place-4.txt'])
   .it('does not place with negative XY', async function (ctx) {
-    await expect(ctx.stdout).to.contain('\n')
+    await expect(ctx.stdout).to.contain('')
   })
 })
 
@@ -111,7 +111,7 @@ describe('Reporting', () => {
   .stdout()
   .command(['toyrobot', '-f', './src/test/report-1.txt'])
   .it('ignores report when not placed', function (ctx) {
-    expect(ctx.stdout).to.contain('\n')
+    expect(ctx.stdout).to.contain('')
   })
 })
 
@@ -126,7 +126,7 @@ describe('Input Variations', () => {
   .stdout()
   .command(['toyrobot', '-f', './src/test/input-2.txt'])
   .it('rejects bad PLACE command', function (ctx) {
-    expect(ctx.stdout).to.contain('\n')
+    expect(ctx.stdout).to.contain('')
   })
   test
   .stdout()
