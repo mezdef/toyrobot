@@ -8,16 +8,22 @@ export interface Position {
 }
 export interface Start {
   position: Position;
-  direction: string;
+  orientation: string;
 }
 export interface Instructions {
   commands: Array<string>;
   start: Start;
 }
 
+// export interface StringArray {
+//   [index: number]: string;
+// }
+
 export interface StringArray {
-  [index: number]: string;
+  address: string[];
 }
+
 export interface SanitizedText {
   [index: number]: Array<string>;
 }
+

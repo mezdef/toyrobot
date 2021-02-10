@@ -1,8 +1,7 @@
 import {prompt} from 'inquirer'
 import {Command, flags} from '@oclif/command'
 import readPipe from '../stdin'
-import * as fs from 'fs'
-import {processTextInput} from '../exports/processes'
+import {Robot} from '../exports/robot'
 
 export default class Toyrobot extends Command {
   static description = "It's a robot!"
@@ -30,17 +29,19 @@ export default class Toyrobot extends Command {
 
   async run() {
     const {flags} = this.parse(Toyrobot)
-
     // Wait for File flag, else read data from editor input
+    const robot = new Robot()
     if (flags.text) {
-      process.stdout.write(processTextInput({commands: flags.text}))
+      await robot.input(flags.text, 'string')
     } else if (flags.file) {
-      process.stdout.write(processTextInput({commands: fs.readFileSync(flags.file, {encoding: 'utf-8'})}))
+      await robot.input(flags.file, 'file')
     } else if (flags.editor) {
-      process.stdout.write(await processTextInput(await this.getInteractiveArgs()))
+      await robot.input(await this.getInteractiveArgs().then((editorInput: any) => {
+        return editorInput.commands
+      }), 'string')
     } else {
-      const pipeInput = await readPipe()
-      if (pipeInput) process.stdout.write(processTextInput({commands: pipeInput}))
+      await robot.input(await readPipe(), 'string')
     }
+    robot.output()
   }
 }
